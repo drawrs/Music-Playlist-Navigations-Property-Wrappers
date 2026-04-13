@@ -11,18 +11,33 @@ struct PlaylistView: View {
     
     // MARK: View body
     var body: some View {
-        List {
-            SongRow(
-                song: "Bohemian Rhapsody - Queen"
-            )
-            
-            SongRow(
-                song: "Hotel CaliforniaEagles - Eagles"
-            )
-            
-            SongRow(
-                song: "Stairway to Heaven - Led Zeppelin"
-            )
+        NavigationStack {
+            List {
+                NavigationLink {
+                    SongDetailView()
+                } label: {
+                    SongRow(
+                        song: "Bohemian Rhapsody - Queen"
+                    )
+                }
+                
+                NavigationLink {
+                    SongDetailView()
+                } label: {
+                    SongRow(
+                        song: "Hotel CaliforniaEagles - Eagles"
+                    )
+                }
+                
+                NavigationLink {
+                    SongDetailView()
+                } label: {
+                    SongRow(
+                        song: "Stairway to Heaven - Led Zeppelin"
+                    )
+                }
+            }
+            .navigationTitle("Playlist")
         }
     }
 

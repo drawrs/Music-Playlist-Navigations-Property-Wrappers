@@ -9,12 +9,14 @@ import SwiftUI
 struct EditNameSheet: View {
 
     var body: some View {
-        Form {
-            Section("Your Name") {
-                TextField("Name", text: .constant(""))
+        NavigationStack {
+            Form {
+                Section("Your Name") {
+                    TextField("Name", text: .constant(""))
+                }
             }
+            .navigationTitle("Edit Name")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Edit Name")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -42,7 +42,7 @@ struct ProfileView: View {
                 } label: {
                     Label("Edit Name", systemImage: "pencil")
                 }
-
+                
                 Button(role: .destructive) {
                     
                 } label: {
