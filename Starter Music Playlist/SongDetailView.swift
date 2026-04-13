@@ -11,9 +11,9 @@ struct SongDetailView: View {
     let isFavorite: Bool
     let onToggleFavorite: () -> Void
 
-    @State private var isPlaying: Bool = false
-    @State private var showLyricsSheet: Bool = false
-    @State private var progress: Double = 0.35
+    private var isPlaying: Bool = false
+    private var showLyricsSheet: Bool = false
+    private var progress: Double = 0.35
 
     var body: some View {
         VStack(spacing: 24) {
@@ -40,14 +40,14 @@ struct SongDetailView: View {
 
             // Progress bar
             VStack(spacing: 4) {
-                Slider(value: $progress, in: 0...1)
+                Slider(value: .constant(0), in: 0...1)
                     .tint(.indigo)
                 HStack {
-                    Text(elapsedTime())
+                    Text("00:00")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text("00:00")
+                    Text("03:00")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -56,16 +56,22 @@ struct SongDetailView: View {
 
             // Playback controls
             HStack(spacing: 40) {
-                Button(action: previousTrack) {
+                Button(action: {
+                    // previous track
+                }) {
                     Image(systemName: "backward.fill")
                         .font(.title2)
                 }
-                Button(action: togglePlay) {
+                Button(action: {
+                    // toggle play
+                }) {
                     Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
                         .font(.system(size: 56))
                         .foregroundStyle(.indigo)
                 }
-                Button(action: nextTrack) {
+                Button(action: {
+                    // next track
+                }) {
                     Image(systemName: "forward.fill")
                         .font(.title2)
                 }
@@ -82,7 +88,9 @@ struct SongDetailView: View {
                     .foregroundStyle(isFavorite ? .red : .gray)
                 }
 
-                Button(action: { showLyricsSheet = true }) {
+                Button(action: {
+                    // show lyric sheet
+                }) {
                     Label("Lyrics", systemImage: "text.quote")
                         .foregroundStyle(.indigo)
                 }
@@ -94,30 +102,6 @@ struct SongDetailView: View {
         .padding()
         .navigationTitle("Now Playing")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $showLyricsSheet) {
-            LyricsSheetView(title: song, artist: "")
-        }
     }
 
-    func togglePlay() {
-        isPlaying.toggle()
-    }
-
-    func previousTrack() {
-        progress = max(0, progress - 0.1)
-    }
-
-    func nextTrack() {
-        progress = min(1, progress + 0.1)
-    }
-
-    func elapsedTime() -> String {
-//        // Parse duration mm:ss and multiply by progress
-//        let parts = duration.split(separator: ":").compactMap { Int($0) }
-//        guard parts.count == 2 else { return "0:00" }
-//        let totalSeconds = parts[0] * 60 + parts[1]
-//        let elapsed = Int(Double(totalSeconds) * progress)
-//        return String(format: "%d:%02d", elapsed / 60, elapsed % 60)
-        return "00:00"
-    }
 }

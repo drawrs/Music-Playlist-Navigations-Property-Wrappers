@@ -24,10 +24,6 @@ struct SongRow: View {
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .lineLimit(1)
-//                Text(artist)
-//                    .font(.caption)
-//                    .foregroundStyle(.secondary)
-//                    .lineLimit(1)
             }
 
             Spacer()

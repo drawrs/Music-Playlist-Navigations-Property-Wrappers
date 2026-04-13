@@ -11,7 +11,7 @@ import SwiftUI
 struct Starter_Music_PlaylistApp: App {
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            PlaylistView(favoriteTitles: ["Hotel California - Eagles"])
         }
     }
 }

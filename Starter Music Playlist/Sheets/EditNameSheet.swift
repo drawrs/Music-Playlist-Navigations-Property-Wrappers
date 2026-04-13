@@ -7,35 +7,32 @@
 import SwiftUI
 
 struct EditNameSheet: View {
-    @Binding var username: String
-    @State private var draft: String = ""
-    @Environment(\.dismiss) private var dismiss
+    var username: String
+    private var draft: String = ""
 
     var body: some View {
         NavigationStack {
             Form {
                 Section("Your Name") {
-                    TextField("Name", text: $draft)
+                    TextField("Name", text: .constant(""))
                 }
             }
             .navigationTitle("Edit Name")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
+                    Button("Cancel") {
+                        // dismiss sheet
+                    }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { saveName() }
-                        .disabled(draft.trimmingCharacters(in: .whitespaces).isEmpty)
+                    Button("Save") {
+                        // save name
+                    }
+                    .disabled(draft.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }
-            .onAppear { draft = username }
         }
     }
 
-    func saveName() {
-        let trimmed = draft.trimmingCharacters(in: .whitespaces)
-        if !trimmed.isEmpty { username = trimmed }
-        dismiss()
-    }
 }
