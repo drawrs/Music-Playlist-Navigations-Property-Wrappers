@@ -11,9 +11,9 @@ struct SongDetailView: View {
     let isFavorite: Bool
     let onToggleFavorite: () -> Void
 
-    private var isPlaying: Bool = false
-    private var showLyricsSheet: Bool = false
-    private var progress: Double = 0.35
+    var isPlaying: Bool = false
+    var showLyricsSheet: Bool = false
+    var progress: Double = 0.35
 
     var body: some View {
         VStack(spacing: 24) {
@@ -104,4 +104,10 @@ struct SongDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
+}
+
+#Preview {
+    SongDetailView(song: "Hi there!", isFavorite: true, onToggleFavorite: {
+        // action when favorite toggled
+    })
 }

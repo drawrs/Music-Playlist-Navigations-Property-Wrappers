@@ -8,7 +8,6 @@ import SwiftUI
 
 struct LogoutSheet: View {
     let onLogout: () -> Void
-    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(spacing: 24) {
@@ -25,9 +24,11 @@ struct LogoutSheet: View {
                 .multilineTextAlignment(.center)
 
             HStack(spacing: 16) {
-                Button("Cancel") { dismiss() }
-                    .buttonStyle(.bordered)
-                    .frame(maxWidth: .infinity)
+                Button("Cancel") {
+                    // dismiss sheet
+                }
+                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
 
                 Button("Log Out", role: .destructive) { onLogout() }
                     .buttonStyle(.borderedProminent)

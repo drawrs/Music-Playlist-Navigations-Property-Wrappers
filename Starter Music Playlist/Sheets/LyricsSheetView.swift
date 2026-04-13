@@ -9,7 +9,6 @@ import SwiftUI
 struct LyricsSheetView: View {
     let title: String
     let artist: String
-    @Environment(\.dismiss) private var dismiss
 
     // Dummy lyrics lines
     private let lines = [
@@ -39,7 +38,9 @@ struct LyricsSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { dismiss() }
+                    Button("Done") {
+                        
+                    }
                 }
             }
         }
