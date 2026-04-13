@@ -8,6 +8,9 @@ import SwiftUI
 
 struct SongDetailView: View {
     // MARK: Properties / variables
+    var song: String
+    @State var progress: Double = 0.5
+    @State var isPlaying: Bool = true
     
     // MARK: View body
     var body: some View {
@@ -27,7 +30,7 @@ struct SongDetailView: View {
 
             // Song info
             VStack(spacing: 4) {
-                Text("Song Title 1 - Artist Name")
+                Text(song)
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -35,7 +38,7 @@ struct SongDetailView: View {
 
             // Progress bar
             VStack(spacing: 4) {
-                Slider(value: .constant(0), in: 0...1)
+                Slider(value: $progress, in: 0...1)
                     .tint(.indigo)
                 HStack {
                     Text("00:00")
@@ -53,19 +56,22 @@ struct SongDetailView: View {
             HStack(spacing: 40) {
                 Button(action: {
                     // previous track
+                    progress -= 0.1
                 }) {
                     Image(systemName: "backward.fill")
                         .font(.title2)
                 }
                 Button(action: {
                     // toggle play
+                    isPlaying.toggle()
                 }) {
-                    Image(systemName: "play.circle.fill")
+                    Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
                         .font(.system(size: 56))
                         .foregroundStyle(.indigo)
                 }
                 Button(action: {
                     // next track
+                    progress += 0.1
                 }) {
                     Image(systemName: "forward.fill")
                         .font(.title2)
@@ -82,5 +88,5 @@ struct SongDetailView: View {
 }
 
 #Preview {
-    SongDetailView()
+    SongDetailView(song: "Song Title - Artist Name")
 }

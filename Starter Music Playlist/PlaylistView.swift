@@ -14,7 +14,7 @@ struct PlaylistView: View {
         NavigationStack {
             List {
                 NavigationLink {
-                    SongDetailView()
+                    SongDetailView(song: "Bohemian Rhapsody - Queen")
                 } label: {
                     SongRow(
                         song: "Bohemian Rhapsody - Queen"
@@ -22,7 +22,7 @@ struct PlaylistView: View {
                 }
                 
                 NavigationLink {
-                    SongDetailView()
+                    SongDetailView(song: "Hotel CaliforniaEagles - Eagles")
                 } label: {
                     SongRow(
                         song: "Hotel CaliforniaEagles - Eagles"
@@ -30,7 +30,7 @@ struct PlaylistView: View {
                 }
                 
                 NavigationLink {
-                    SongDetailView()
+                    SongDetailView(song: "Stairway to Heaven - Led Zeppelin")
                 } label: {
                     SongRow(
                         song: "Stairway to Heaven - Led Zeppelin"

@@ -7,16 +7,28 @@
 import SwiftUI
 
 struct EditNameSheet: View {
-
+    @Binding var fullName: String
+    @Binding var isPresented: Bool
+    
     var body: some View {
         NavigationStack {
             Form {
                 Section("Your Name") {
-                    TextField("Name", text: .constant(""))
+                    TextField("Name", text: $fullName)
                 }
             }
             .navigationTitle("Edit Name")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        isPresented = false
+                    } label: {
+                        Text("Done")
+                    }
+
+                }
+            }
         }
     }
 }

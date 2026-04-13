@@ -8,6 +8,8 @@ import SwiftUI
 
 struct ProfileView: View {
     // MARK: Properties / variables
+    @State var isEditingSheetPresented: Bool = false
+    @State var fullName: String = "John Doe"
     
     // MARK: View body
     var body: some View {
@@ -25,7 +27,7 @@ struct ProfileView: View {
                             .foregroundStyle(.indigo)
                     }
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("John Doe")
+                        Text(fullName)
                             .font(.headline)
                         Text("Music Lover")
                             .font(.subheadline)
@@ -38,13 +40,17 @@ struct ProfileView: View {
             // Settings
             Section("Settings") {
                 Button {
-                    
+                    isEditingSheetPresented = true
                 } label: {
                     Label("Edit Name", systemImage: "pencil")
                 }
+                .sheet(isPresented: $isEditingSheetPresented) {
+                    EditNameSheet(fullName: $fullName,
+                                  isPresented: $isEditingSheetPresented)
+                }
                 
                 Button(role: .destructive) {
-                    
+                    fullName = "Guest"
                 } label: {
                     Label("Log Out", systemImage: "rectangle.portrait.and.arrow.right")
                 }
