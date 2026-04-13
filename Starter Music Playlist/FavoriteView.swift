@@ -36,7 +36,6 @@ struct FavoriteView: View {
                 }
             }
         }
-        .navigationTitle("Favorites")
     }
 
 }

@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct LogoutSheet: View {
-    let onLogout: () -> Void
 
     var body: some View {
         VStack(spacing: 24) {
@@ -30,10 +29,12 @@ struct LogoutSheet: View {
                 .buttonStyle(.bordered)
                 .frame(maxWidth: .infinity)
 
-                Button("Log Out", role: .destructive) { onLogout() }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.red)
-                    .frame(maxWidth: .infinity)
+                Button("Log Out", role: .destructive) {
+                    // logout action
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.red)
+                .frame(maxWidth: .infinity)
             }
             .padding(.horizontal)
         }

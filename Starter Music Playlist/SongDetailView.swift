@@ -8,8 +8,6 @@ import SwiftUI
 
 struct SongDetailView: View {
     let song: String
-    let isFavorite: Bool
-    let onToggleFavorite: () -> Void
 
     var isPlaying: Bool = false
     var showLyricsSheet: Bool = false
@@ -79,35 +77,24 @@ struct SongDetailView: View {
             .foregroundStyle(.primary)
 
             // Favorite + Lyrics buttons
-            HStack(spacing: 32) {
-                Button(action: onToggleFavorite) {
-                    Label(
-                        isFavorite ? "Unfavorite" : "Favorite",
-                        systemImage: isFavorite ? "heart.fill" : "heart"
-                    )
-                    .foregroundStyle(isFavorite ? .red : .gray)
-                }
-
-                Button(action: {
-                    // show lyric sheet
-                }) {
-                    Label("Lyrics", systemImage: "text.quote")
-                        .foregroundStyle(.indigo)
-                }
+            Button(action: {
+                
+            }) {
+                Label(
+                    "Favorite",
+                    systemImage: "heart"
+                )
+                .foregroundStyle(.gray)
             }
             .buttonStyle(.bordered)
 
             Spacer()
         }
         .padding()
-        .navigationTitle("Now Playing")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
 }
 
 #Preview {
-    SongDetailView(song: "Hi there!", isFavorite: true, onToggleFavorite: {
-        // action when favorite toggled
-    })
+    SongDetailView(song: "Hi there!")
 }

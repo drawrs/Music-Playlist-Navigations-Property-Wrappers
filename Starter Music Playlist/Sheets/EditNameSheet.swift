@@ -8,31 +8,16 @@ import SwiftUI
 
 struct EditNameSheet: View {
     var username: String
-    private var draft: String = ""
+    var draft: String = ""
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section("Your Name") {
-                    TextField("Name", text: .constant(""))
-                }
-            }
-            .navigationTitle("Edit Name")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        // dismiss sheet
-                    }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        // save name
-                    }
-                    .disabled(draft.trimmingCharacters(in: .whitespaces).isEmpty)
-                }
+        Form {
+            Section("Your Name") {
+                TextField("Name", text: .constant(""))
             }
         }
+        .navigationTitle("Edit Name")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
 }

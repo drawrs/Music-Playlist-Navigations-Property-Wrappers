@@ -40,42 +40,6 @@ struct ProfileView: View {
                 .padding(.vertical, 8)
             }
 
-            // Stats
-            Section("Stats") {
-                HStack {
-                    VStack {
-                        Text("\(songStats)")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        Text("Songs")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    VStack {
-                        Text("\(playlistStats)")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        Text("Playlists")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    VStack {
-                        Text("\(followingStats)")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                        Text("Following")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                .padding(.vertical, 4)
-            }
-
             // Settings
             Section("Settings") {
                 Button {
@@ -91,6 +55,5 @@ struct ProfileView: View {
                 }
             }
         }
-        .navigationTitle("Profile")
     }
 }

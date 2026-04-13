@@ -15,7 +15,6 @@ struct PlaylistView: View {
                 song: song
             )
         }
-        .navigationTitle("My Playlist")
     }
 
 }
