@@ -7,12 +7,9 @@
 import SwiftUI
 
 struct SongDetailView: View {
-    let song: String
-
-    var isPlaying: Bool = false
-    var showLyricsSheet: Bool = false
-    var progress: Double = 0.35
-
+    // MARK: Properties / variables
+    
+    // MARK: View body
     var body: some View {
         VStack(spacing: 24) {
             // Album art
@@ -30,7 +27,7 @@ struct SongDetailView: View {
 
             // Song info
             VStack(spacing: 4) {
-                Text(song)
+                Text("Song Title 1 - Artist Name")
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -63,7 +60,7 @@ struct SongDetailView: View {
                 Button(action: {
                     // toggle play
                 }) {
-                    Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                    Image(systemName: "play.circle.fill")
                         .font(.system(size: 56))
                         .foregroundStyle(.indigo)
                 }
@@ -76,17 +73,6 @@ struct SongDetailView: View {
             }
             .foregroundStyle(.primary)
 
-            // Favorite + Lyrics buttons
-            Button(action: {
-                
-            }) {
-                Label(
-                    "Favorite",
-                    systemImage: "heart"
-                )
-                .foregroundStyle(.gray)
-            }
-            .buttonStyle(.bordered)
 
             Spacer()
         }
@@ -96,5 +82,5 @@ struct SongDetailView: View {
 }
 
 #Preview {
-    SongDetailView(song: "Hi there!")
+    SongDetailView()
 }

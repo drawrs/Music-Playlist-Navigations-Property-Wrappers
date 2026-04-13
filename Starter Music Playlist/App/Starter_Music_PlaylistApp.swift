@@ -11,7 +11,7 @@ import SwiftUI
 struct Starter_Music_PlaylistApp: App {
     var body: some Scene {
         WindowGroup {
-            Text("Hello world!")
+            Text("Hello, World!")
         }
     }
 }

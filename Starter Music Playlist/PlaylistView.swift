@@ -7,14 +7,28 @@
 import SwiftUI
 
 struct PlaylistView: View {
-    var favoriteTitles: [String]
-
+    // MARK: Properties / variables
+    
+    // MARK: View body
     var body: some View {
-        List(sampleSongs, id: \.self) { song in
+        List {
             SongRow(
-                song: song
+                song: "Bohemian Rhapsody - Queen"
+            )
+            
+            SongRow(
+                song: "Hotel CaliforniaEagles - Eagles"
+            )
+            
+            SongRow(
+                song: "Stairway to Heaven - Led Zeppelin"
             )
         }
     }
 
+}
+
+
+#Preview {
+    PlaylistView()
 }

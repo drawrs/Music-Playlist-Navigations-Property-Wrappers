@@ -7,8 +7,6 @@
 import SwiftUI
 
 struct EditNameSheet: View {
-    var username: String
-    var draft: String = ""
 
     var body: some View {
         Form {
@@ -19,5 +17,4 @@ struct EditNameSheet: View {
         .navigationTitle("Edit Name")
         .navigationBarTitleDisplayMode(.inline)
     }
-
 }

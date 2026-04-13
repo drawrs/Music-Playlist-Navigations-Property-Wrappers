@@ -7,14 +7,9 @@
 import SwiftUI
 
 struct ProfileView: View {
-    private var username: String = "Rizal Hilman"
-    private var isEditingName: Bool = false
-    private var showLogoutSheet: Bool = false
-
-    var songStats: Int = 0
-    var playlistStats: Int = 0
-    var followingStats: Int = 0
+    // MARK: Properties / variables
     
+    // MARK: View body
     var body: some View {
         List {
             // Avatar + name
@@ -24,13 +19,13 @@ struct ProfileView: View {
                         Circle()
                             .fill(Color.indigo.opacity(0.2))
                             .frame(width: 64, height: 64)
-                        Text("S")
+                        Text("JD")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundStyle(.indigo)
                     }
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(username)
+                        Text("John Doe")
                             .font(.headline)
                         Text("Music Lover")
                             .font(.subheadline)
@@ -56,4 +51,8 @@ struct ProfileView: View {
             }
         }
     }
+}
+
+#Preview {
+    ProfileView()
 }

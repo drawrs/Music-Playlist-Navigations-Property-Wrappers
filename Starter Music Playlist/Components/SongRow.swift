@@ -28,12 +28,6 @@ struct SongRow: View {
 
             Spacer()
 
-            if false {
-                Image(systemName: "heart.fill")
-                    .foregroundStyle(.red)
-                    .font(.caption)
-            }
-
             Text("00:00")
                 .font(.caption)
                 .foregroundStyle(.secondary)
