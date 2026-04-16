@@ -8,9 +8,11 @@ import SwiftUI
 
 struct SongDetailView: View {
     // MARK: Properties / variables
-    var song: String
     @State var progress: Double = 0.5
     @State var isPlaying: Bool = true
+    
+    @State var selectedSongIndex: Int
+    @State var songTitles: [String]
     
     // MARK: View body
     var body: some View {
@@ -30,7 +32,7 @@ struct SongDetailView: View {
 
             // Song info
             VStack(spacing: 4) {
-                Text(song)
+                Text(songTitles[selectedSongIndex])
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -55,23 +57,32 @@ struct SongDetailView: View {
             // Playback controls
             HStack(spacing: 40) {
                 Button(action: {
-                    // previous track
-                    progress -= 0.1
+                   skipBackward()
                 }) {
                     Image(systemName: "backward.fill")
                         .font(.title2)
                 }
+                
                 Button(action: {
-                    // toggle play
-                    isPlaying.toggle()
+                    if isPlaying {
+                        pauseSong()
+                    } else {
+                        playSong()
+                    }
                 }) {
-                    Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                        .font(.system(size: 56))
-                        .foregroundStyle(.indigo)
+                    if isPlaying {
+                        Image(systemName: "pause.circle.fill")
+                            .font(.system(size: 56))
+                            .foregroundStyle(.indigo)
+                    } else {
+                        Image(systemName: "play.circle.fill")
+                            .font(.system(size: 56))
+                            .foregroundStyle(.indigo)
+                    }
                 }
+                
                 Button(action: {
-                    // next track
-                    progress += 0.1
+                    skipForward()
                 }) {
                     Image(systemName: "forward.fill")
                         .font(.title2)
@@ -84,9 +95,51 @@ struct SongDetailView: View {
         }
         .padding()
     }
-
+    
+    func playSong() {
+        isPlaying = true
+    }
+    
+    func pauseSong() {
+        isPlaying = false
+    }
+    
+    func skipForward() {
+        if progress < 1 {
+            progress += 0.1
+        }
+        checkProgress()
+    }
+    
+    func skipBackward() {
+        if progress > 0 {
+            progress -= 0.1
+        }
+        checkProgress()
+    }
+    
+    func checkProgress() {
+        if progress >= 1 && selectedSongIndex < songTitles.count - 1 {
+            playNextSong()
+        } else if progress <= 0 && selectedSongIndex > 0 {
+            playPrevSong()
+        }
+    }
+    
+    func playPrevSong() {
+        selectedSongIndex -= 1
+        progress = 0
+    }
+    
+    func playNextSong() {
+        selectedSongIndex += 1
+        progress = 0
+    }
 }
 
 #Preview {
-    SongDetailView(song: "Song Title - Artist Name")
+    SongDetailView(progress: 0,
+                   isPlaying: true,
+                   selectedSongIndex: 0,
+                   songTitles: ["Song Title - 1", "Song Title - 2"])
 }

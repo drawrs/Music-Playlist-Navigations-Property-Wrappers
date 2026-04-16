@@ -8,41 +8,31 @@ import SwiftUI
 
 struct PlaylistView: View {
     // MARK: Properties / variables
+    @State var songTitles: [String] = [
+        "Bohemian Rhapsody - Queen",
+        "Hotel CaliforniaEagles - Eagles",
+        "Stairway to Heaven - Led Zeppelin"
+    ]
     
     // MARK: View body
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink {
-                    SongDetailView(song: "Bohemian Rhapsody - Queen")
-                } label: {
-                    SongRow(
-                        song: "Bohemian Rhapsody - Queen"
-                    )
-                }
-                
-                NavigationLink {
-                    SongDetailView(song: "Hotel CaliforniaEagles - Eagles")
-                } label: {
-                    SongRow(
-                        song: "Hotel CaliforniaEagles - Eagles"
-                    )
-                }
-                
-                NavigationLink {
-                    SongDetailView(song: "Stairway to Heaven - Led Zeppelin")
-                } label: {
-                    SongRow(
-                        song: "Stairway to Heaven - Led Zeppelin"
-                    )
+                ForEach(songTitles.indices, id: \.self) { songIndex in
+                    NavigationLink {
+                        SongDetailView(selectedSongIndex: songIndex,
+                                       songTitles: songTitles)
+                    } label: {
+                        SongRow(
+                            song: songTitles[songIndex]
+                        )
+                    }
                 }
             }
             .navigationTitle("Playlist")
         }
     }
-
 }
-
 
 #Preview {
     PlaylistView()
