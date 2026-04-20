@@ -8,15 +8,19 @@ import SwiftUI
 
 struct SongDetailView: View {
     // MARK: Properties / variables
+    
     @State var progress: Double = 0.5
     @State var isPlaying: Bool = true
     
+    // Step 3 - Prepare variables / data that will be passed from previous view
     @State var selectedSongIndex: Int
-    @State var songTitles: [String]
+    var songTitles: [String]
     
     // MARK: View body
     var body: some View {
+    
         VStack(spacing: 24) {
+            
             // Album art
             ZStack {
                 Circle()
@@ -57,6 +61,7 @@ struct SongDetailView: View {
             // Playback controls
             HStack(spacing: 40) {
                 Button(action: {
+                    // Step 6: call the functions
                    skipBackward()
                 }) {
                     Image(systemName: "backward.fill")
@@ -96,6 +101,7 @@ struct SongDetailView: View {
         .padding()
     }
     
+    // Step 5 - Define all functions can be performed in this view
     func playSong() {
         isPlaying = true
     }
@@ -119,11 +125,19 @@ struct SongDetailView: View {
     }
     
     func checkProgress() {
-        if progress >= 1 && selectedSongIndex < songTitles.count - 1 {
+        if progress >= 1 && canPlayNextSong() {
             playNextSong()
         } else if progress <= 0 && selectedSongIndex > 0 {
             playPrevSong()
         }
+    }
+    
+    func canPlayNextSong() -> Bool {
+        return selectedSongIndex < songTitles.count - 1
+    }
+    
+    func canPlayPrevSong() -> Bool {
+        return selectedSongIndex > 0
     }
     
     func playPrevSong() {
@@ -135,6 +149,7 @@ struct SongDetailView: View {
         selectedSongIndex += 1
         progress = 0
     }
+    
 }
 
 #Preview {
